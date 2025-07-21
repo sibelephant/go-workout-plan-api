@@ -80,3 +80,21 @@ func DeleteWorkoutPlan(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusNoContent)
 }
+
+// GetWorkoutPlanByID handles fetching a single workout plan by ID
+func GetWorkoutPlanByID(w http.ResponseWriter, r *http.Request) {
+    params := mux.Vars(r)
+    id := params["id"]
+
+    plan, err := database.Client.WorkoutPlan.FindUnique(
+        db.WorkoutPlan.ID.Equals(id),
+    ).Exec(context.Background())
+    
+    if err != nil {
+        http.Error(w, "Workout plan not found", http.StatusNotFound)
+        return
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(plan)
+}

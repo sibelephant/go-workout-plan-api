@@ -21,7 +21,7 @@ func main(){
 	//Define API routes 
 	r.HandleFunc("/workout-plans", handlers.CreateWorkoutPlan).Methods("POST")
 	r.HandleFunc("/workout-plans",handlers.GetWorkoutPlans).Methods("GET")
-	r.HandleFunc("/workout-plans/{id}",handlers.GetWorkoutPlans).Methods("GET")
+	r.HandleFunc("/workout-plans/{id}",handlers.GetWorkoutPlanByID).Methods("GET")
 	r.HandleFunc("/workout-plans/{id}",handlers.UpdateWorkoutPlan).Methods("PUT")
 	r.HandleFunc("/workout-plans/{id}",handlers.DeleteWorkoutPlan).Methods("DELETE")
 
