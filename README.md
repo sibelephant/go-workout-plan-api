@@ -83,4 +83,4 @@ The server will start on `http://localhost:8080`.
 - Environment variables are loaded from `.env`
 
 ## License
-MIT 
+MIT
